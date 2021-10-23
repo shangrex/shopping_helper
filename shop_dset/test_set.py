@@ -113,30 +113,27 @@ test_shop = [
         "content": [
         {
             "url": "https://gwan.tw/wp-content/uploads/20190811135312_63.jpg",
-            "buttons": [
+            "buttons": 
                 {
                     "text": "銅盤烤肉",
                     "edgeTo": "node_2"
                 }
-            ]
         },
         {
             "url": "https://maruko.tw/wp-content/uploads/flickr/50464841108_8754dbd016_b.jpg",
-            "buttons": [
+            "buttons": 
                 {
                     "text": "鍋類",
                     "edgeTo": "node_2"
                 }
-            ]
         },
         {
             "url": "https://truth.bahamut.com.tw/s01/202109/5fcee5774efbbfb7b27e46d2ccfb3de3.JPG",
-            "buttons": [
+            "buttons": 
                 {
                     "text": "拌飯類",
                     "edgeTo": "node_2"
                 }
-            ]
         }
         ]
       }
@@ -153,57 +150,51 @@ test_shop = [
         "content": [
         {
             "url": "https://gwan.tw/wp-content/uploads/20190811135312_63.jpg",
-            "buttons": [
+            "buttons": 
                 {
                     "text": "海鮮泡菜鍋",
                     "edgeTo": "node_3"
                 }
-            ]
         },
         {
             "url": "https://maruko.tw/wp-content/uploads/flickr/50464841108_8754dbd016_b.jpg",
-            "buttons": [
+            "buttons": 
                 {
                     "text": "海鮮豆腐鍋",
                     "edgeTo": "node_3"
                 }
-            ]
         },
         {
             "url": "https://truth.bahamut.com.tw/s01/202109/5fcee5774efbbfb7b27e46d2ccfb3de3.JPG",
-            "buttons": [
+            "buttons": 
                 {
                     "text": "豬肉泡菜鍋",
                     "edgeTo": "node_3"
                 }
-            ]
         },
         {
             "url": "https://truth.bahamut.com.tw/s01/202109/5fcee5774efbbfb7b27e46d2ccfb3de3.JPG",
-            "buttons": [
+            "buttons": 
                 {
                     "text": "豬肉豆腐鍋",
                     "edgeTo": "node_3"
                 }
-            ]
         },
         {
             "url": "https://truth.bahamut.com.tw/s01/202109/5fcee5774efbbfb7b27e46d2ccfb3de3.JPG",
-            "buttons": [
+            "buttons": 
                 {
                     "text": "牛肉泡菜鍋",
                     "edgeTo": "node_3"
                 }
-            ]
         },
         {
             "url": "https://truth.bahamut.com.tw/s01/202109/5fcee5774efbbfb7b27e46d2ccfb3de3.JPG",
-            "buttons": [
+            "buttons": 
                 {
                     "text": "牛肉泡菜鍋",
                     "edgeTo": "node_3"
                 }
-            ]
         },
         ]
       }

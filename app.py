@@ -15,7 +15,7 @@ from linebot.models import (
 )
 
 from shop_dset.test_set import test_shop
-from shop_dset.event import entrance_msg
+from shop_dset.event import entrance_msg, router_msg
 
 app = Flask(__name__)
 load_dotenv()
@@ -49,31 +49,30 @@ def test():
 
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
-
-    entrance_msg(event, 0)
+    r""" Handle message event."""
+    entrance_msg(event, test_shop)
 
 
 @handler.add(PostbackEvent)
 def post_route(event):
+    r"""Handle postback event."""
     print("post back event")
     print(event.postback.data)
-    if event.postback.data == "node_3":
-        entrance_msg(event, 3)    
-    if event.postback.data == "node_4":
-        entrance_msg(event, 4)
+    router_msg(event, event.postback.data, test_shop)    
+
+
 
 
 @handler.add(BeaconEvent)
 def handle_beacon_event(event):
+    r"""Handle beacon event."""
     if event.beacon.hwid == "{your HWId}":
         msg = '{your message 1}'
     else:
         msg = 'you have received beacon.'
 
-    line_bot_api.reply_message(
-        event.reply_token,
-        TextSendMessage(text=msg)
-    )
+    entrance_msg(event, test_shop)
+
 
 if __name__ == '__main__':
     port = getenv('PORT')
