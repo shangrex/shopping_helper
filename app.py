@@ -1,6 +1,8 @@
 from flask import Flask, request, jsonify, abort
 from os import getenv
+import json
 from dotenv import load_dotenv
+import requests
 import datetime as dt
 from linebot.exceptions import (
     InvalidSignatureError
@@ -15,13 +17,14 @@ from linebot.models import (
 )
 
 from shop_dset.test_set import test_shop
-from shop_dset.event import entrance_msg, router_msg
+from shop_dset.event import entrance_msg, router_msg, foward_special_text
 
 app = Flask(__name__)
 load_dotenv()
 
 channel_secret = getenv("LINE_CHANNEL_SECRET", None)
 channel_access_token = getenv("LINE_CHANNEL_ACCESS_TOKEN", None)
+hwid = getenv("BEACON_ID", None)
 
 line_bot_api = LineBotApi(channel_access_token)
 handler = WebhookHandler(channel_secret)
@@ -50,15 +53,22 @@ def test():
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     r""" Handle message event."""
-    entrance_msg(event, test_shop)
+    s = "http://34.80.76.67:8000/fsm/{0}".format(hwid)
+    r = requests.get(s)
+    shop = json.loads(r.text)
+    shop = [json.loads(i["data"]) for i in shop]
+    foward_special_text(event, shop)
 
 
 @handler.add(PostbackEvent)
 def post_route(event):
     r"""Handle postback event."""
     print("post back event")
-    print(event.postback.data)
-    router_msg(event, event.postback.data, test_shop)    
+    s = "http://34.80.76.67:8000/fsm/{0}".format(hwid)
+    r = requests.get(s)
+    shop = json.loads(r.text)
+    shop = [json.loads(i["data"]) for i in shop]
+    router_msg(event, event.postback.data, shop)    
 
 
 
@@ -70,8 +80,12 @@ def handle_beacon_event(event):
         msg = '{your message 1}'
     else:
         msg = 'you have received beacon.'
-
-    entrance_msg(event, test_shop)
+    s = "http://34.80.76.67:8000/fsm/{0}".format(hwid)
+    r = requests.get(s)
+    shop = json.loads(r.text)
+    shop = [json.loads(i["data"]) for i in shop]
+    print(shop)
+    router_msg(event, "node_0", shop)
 
 
 if __name__ == '__main__':
