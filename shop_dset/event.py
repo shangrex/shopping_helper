@@ -49,6 +49,7 @@ def router_msg(event, node, test_shop):
 
 
 def foward_special_text(event, test_shop):
+    print(special_text)
     for i in special_text:
         if event.message.text in special_text:
             router_msg(event, special_text[event.message.text], test_shop)
@@ -117,6 +118,7 @@ def carousel_node(event, data):
             button_txt = i['buttons'][0]["text"]
             goto_state = i['buttons'][0]["edgeTo"]
         
+        print("next state", goto_state)
         image_object.append(
             ImageCarouselColumn(
                 image_url=i['url'],
@@ -148,8 +150,8 @@ def text_node(event, data):
             button_object.append(
                 QuickReplyButton(action=MessageAction(label=i["text"], text=i["text"]))
             )
-            if i['text'] not in special_text:
-                special_text[i['text']] = i["edgeTo"]
+            special_text[i['text']] = i["edgeTo"]
+
             
     if len(button_object) != 0:
         text_message = TextSendMessage(
@@ -202,7 +204,7 @@ def end_node(event, data):
     for i in range(5):
         recommed_id = list(track_map.keys())[i]
         print(recommed_id)
-        if recommed_id == "0" or recommed_id == "1":
+        if recommed_id == "0":
             continue
         s = "http://34.80.76.67:8000/shops/{0}".format(recommed_id)
         r = requests.get(s)

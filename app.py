@@ -57,13 +57,14 @@ def handle_message(event):
     r = requests.get(s)
     shop = json.loads(r.text)
     shop = [json.loads(i["data"]) for i in shop]
+    print(shop)
     foward_special_text(event, shop)
 
 
 @handler.add(PostbackEvent)
 def post_route(event):
     r"""Handle postback event."""
-    print("post back event")
+    print("post back event", event.postback.data)
     s = "http://34.80.76.67:8000/fsm/{0}".format(hwid)
     r = requests.get(s)
     shop = json.loads(r.text)
