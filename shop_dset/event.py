@@ -218,15 +218,15 @@ def end_node(event, data):
                 actions=[
                     MessageAction(
                         label='Locaton',
-                        text=shop["Location"]
+                        text=shop["location"]
                     ),
                     MessageAction(
                         label='Opening Hours',
-                        text=shop["Opening Hours"]
+                        text=shop["opening_hours"]
                     ),
                     MessageAction(
                         label='People In Shop',
-                        text=shop["People In Shop"]
+                        text=shop["people_in_shop"]
                     ),
                 ]
             )
