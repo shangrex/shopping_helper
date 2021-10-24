@@ -217,16 +217,16 @@ def end_node(event, data):
                 text=shop["description"]+"\n"+shop["category"]+"\n"+shop["phone_num"],
                 actions=[
                     MessageAction(
-                        label='locaton',
-                        text=shop["location"]
+                        label='Locaton',
+                        text=shop["Location"]
                     ),
                     MessageAction(
-                        label='opening_hours',
-                        text=shop["opening_hours"]
+                        label='Opening Hours',
+                        text=shop["Opening Hours"]
                     ),
                     MessageAction(
-                        label='people_in_shop',
-                        text=shop["people_in_shop"]
+                        label='People In Shop',
+                        text=shop["People In Shop"]
                     ),
                 ]
             )
